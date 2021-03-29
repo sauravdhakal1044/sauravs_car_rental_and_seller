@@ -1,0 +1,12 @@
+1 car1 Rs.450
+2 car2 Rs.500
+3 car3 Rs.550
+4 car4 Rs.300
+5 car5 Rs.350
+6 car6 Rs.400
+7 car7 Rs.450
+8 car8 Rs.470
+9 car9 Rs.520
+10 car10 Rs.530
+11 car11 Rs.490
+12 car12 Rs.520
