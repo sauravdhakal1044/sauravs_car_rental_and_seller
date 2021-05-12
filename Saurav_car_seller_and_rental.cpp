@@ -22,9 +22,9 @@ void administration();
 void setprice();
 void car_for_rent();
 void display_car_rent_price();
-void rented_car();
+// void rented_car();
 void set_car_rent_price();
-void registr_date_time();
+// void registr_date_time();
 void update_avai_cars();
 
 void current_date_time(int a, int b, int c, int d, int e, int f, string h);
@@ -103,18 +103,18 @@ void administration()
 {
     system("clear");
     int a, i;
-    string adminid = "admin";
-    string adminpass = "1044cool";
-    string ai, id, ap, pass;
+    string ai = "admin";
+    string ap = "1044cool";
+    string id,pass;
     cout << "Welcome to Administration page." << endl;
     cout << "Please Enter your id and password to proceed forward." << endl;
-    ofstream admin;
-    admin.open("admin_id_pass.txt", ios::app);
-    admin << adminid << " " << adminpass << endl;
-    admin.close();
-    ifstream read;
-    read.open("admin_id_pass.txt");
-    read >> ai >> ap;
+    //ofstream admin;
+    //admin.open("admin_id_pass.txt", ios::app);
+    //admin << adminid << " " << adminpass << endl;
+    //admin.close();
+    //ifstream read;
+    //read.open("admin_id_pass.txt");
+    //read >> ai >> ap;
     cout << "Please Enter your id :" << endl;
     cin >> id;
     cout << "Please Enter your password :" << endl;
@@ -139,9 +139,9 @@ void administration()
         cout << "2. Set cars rental charge." << endl;
         cout << "3. Update available cars for rent." << endl;
         cout << "4. Set cars for rent." << endl;
-        cout << "5. Register rented cars." << endl;
-        cout << "6. Register car rent date and time." << endl;
-        cout << "7. Goto Homepage." << endl;
+        // cout << "5. Register rented cars." << endl;
+        // cout << "6. Register car rent date and time." << endl;
+        cout << "5. Goto Homepage." << endl;
     sau:
         cin >> a;
         switch (a)
@@ -186,15 +186,23 @@ void administration()
             system("clear");
             car_for_rent();
             break;
+        // case 5:
+        //     system("clear");
+        //     rented_car();
+        //     break;
+        // case 6:
+        //     system("clear");
+        //     registr_date_time();
+        //     break;
         case 5:
             system("clear");
-            rented_car();
-            break;
-        case 6:
-            system("clear");
-            registr_date_time();
-            break;
-        case 7:
+            cout << "Loading ";
+            for (i = 0; i < 2; i++)
+            {
+                cout << " - ";
+                cout.flush();
+                sleep(1);
+            }
             display();
             main();
             break;
@@ -228,48 +236,48 @@ void setprice()
     sleep(1);
     administration();
 }
-void rented_car()
-{
-    system("clear");
-    int a, b;
-    string name;
-    ofstream bo;
-    bo.open("rentedones.txt", ios::app);
-    cout << "enter rented car num." << endl;
-    cin >> a;
-    cout << "enter rented car name." << endl;
-    cin >> name;
-    bo << a << " " << name << endl;
-    cout << "Data updated." << endl;
-    cout << "Enter " << endl;
-    cout << "1. Administration page." << endl;
-    cout << "2. Add another rented car data." << endl;
-    cout << "3. Main menu." << endl;
-    cin >> b;
-yes:
-    if (b == 1)
-    {
-        system("clear");
-        administration();
-    }
-    else if (b == 2)
-    {
-        system("clear");
-        rented_car();
-    }
-    else if (b == 3)
-    {
-        system("clear");
-        display();
-        main();
-    }
-    else
-    {
-        cout << "You Entered wrong key." << endl;
-        cout << "Enter again." << endl;
-        goto yes;
-    }
-}
+// void rented_car()
+// {
+//     system("clear");
+//     int a, b;
+//     string name;
+//     ofstream bo;
+//     bo.open("rentedones.txt", ios::app);
+//     cout << "enter rented car num." << endl;
+//     cin >> a;
+//     cout << "enter rented car name." << endl;
+//     cin >> name;
+//     bo << a << " " << name << endl;
+//     cout << "Data updated." << endl;
+//     cout << "Enter " << endl;
+//     cout << "1. Administration page." << endl;
+//     cout << "2. Add another rented car data." << endl;
+//     cout << "3. Main menu." << endl;
+//     cin >> b;
+// yes:
+//     if (b == 1)
+//     {
+//         system("clear");
+//         administration();
+//     }
+//     else if (b == 2)
+//     {
+//         system("clear");
+//         rented_car();
+//     }
+//     else if (b == 3)
+//     {
+//         system("clear");
+//         display();
+//         main();
+//     }
+//     else
+//     {
+//         cout << "You Entered wrong key." << endl;
+//         cout << "Enter again." << endl;
+//         goto yes;
+//     }
+// }
 void update_avai_cars()
 {
     system("clear");
@@ -345,6 +353,7 @@ dhkl:
         checkfare();
         break;
     case 4:
+        system("clear");
         int l;
         cout << "Loading ";
         for (l = 0; l < 2; l++)
@@ -567,6 +576,7 @@ void rentcar()
         cout << "Enter car name." << endl;
         cout << "i.e Select car+num 1 to 12." << endl;
         cin >> cn;
+
         while (read >> id1 >> carrent1)
         {
             if (a == id1 && cn == carrent1)
@@ -598,7 +608,7 @@ void rentcar()
 void checkfreecar(int y, string z)
 {
     system("clear");
-    int a, count;
+    int a, count, count1;
     string c;
     ifstream chk;
     chk.open("rentedones.txt");
@@ -613,52 +623,118 @@ void checkfreecar(int y, string z)
     chk.close();
     if (count == 1)
     {
-        cout << "This car is already on rent please select another." << endl;
-        sleep(1);
+        cout << "Sorry!!!!!!This car is already on rent please select another." << endl;
+        sleep(3);
         system("clear");
         rentcar();
     }
-    if (count == 0)
+    else
     {
-        int date;
-        string name;
-        cout << "Your Selected Car is rented." << endl;
-        sleep(2);
-        system("clear");
-        display();
-        main();
+        int date, sau;
+        string name, dhk;
+        ifstream check;
+        check.open("carrent.txt");
+        while (check >> sau >> dhk)
+        {
+            if (y == sau && z == dhk)
+            {
+                count1 = 1;
+                system("clear");
+            }
+            // cout<<sau<<endl<<dhk<<endl;
+        }
+        check.close();
+        if (count1 == 1)
+        {
+            int yr, mnth, day, hr, min, sec,i;
+            string name1, nameid,id1, tap;
+            time_t dhakal = time(NULL);
+            struct tm *saurav;
+            saurav = localtime(&dhakal);
+            yr = saurav->tm_year+1900;
+            mnth = saurav->tm_mon + 1;
+            day = saurav->tm_mday;
+            hr = saurav->tm_hour;
+            min = saurav->tm_min;
+            sec = saurav->tm_sec;
+            cout << "Please enter your name.";
+            cin >> name1;
+            id1=to_string(y);
+            nameid = name1+id1;
+            if (hr > 12)
+            {
+                tap = "pm";
+                hr=hr-12;
+            }
+            else if (hr < 12)
+            {
+                tap = "am";
+            }
+            ofstream files;
+            files.open(nameid + "_dt.txt", ios::app);
+            files << yr << ' ' << mnth << ' ' << day << ' ' << hr << ' ' << min << ' ' << sec << ' ' << tap << endl;
+            cout << "Your Selected Car is rented." << endl;
+            sleep(2);
+            cout<<"Your rented date and time is being registrd with your name +your car id"<<endl;
+            cout << "Registering  ";
+            for (i = 0; i < 2; i++)
+            {
+                cout << " - ";
+                cout.flush();
+                sleep(1);
+            }
+            cout << endl;
+            cout << "Registration completed." << endl;
+            ofstream bo;
+            bo.open("rentedones.txt", ios::app);
+            bo << y << " " << z << endl;
+            sleep(1);
+            system("clear");
+            display();
+            main();
+        }
+        else
+        {
+            system("clear");
+            cout << "Your car id and car name doest match" << endl;
+            cout << "Please match the car id and name and enter again" << endl;
+            // cout<<"Enter any key to try again"<<endl;
+            // getchar();
+            sleep(3);
+            rentcar();
+        }
     }
 }
-void registr_date_time()
-{
-    system("clear");
-    int yr, mnth, day, hr, min, sec, i;
-    string name, nameid, id, tap;
-    cout << "Please enter customer name ." << endl;
-    cin >> name;
-    cout << "Please enter id of car the customer rented." << endl;
-    cin >> id;
-    nameid = name + id;
-    ofstream datelists;
-    datelists.open(nameid + "_dt.txt", ios::app);
-    cout << "Enter the year,month and day the customer  have rented the car." << endl;
-    cin >> yr >> mnth >> day;
-    cout << "Enter hour minutes and second the customer have rented the car. " << endl;
-    cin >> hr >> min >> sec;
-    cout << "Enter am or pm." << endl;
-    cin >> tap;
-    datelists << yr << ' ' << mnth << ' ' << day << ' ' << hr << ' ' << min << ' ' << sec << ' ' << tap << endl;
-    cout << "Registering  ";
-    for (i = 0; i < 2; i++)
-    {
-        cout << " - ";
-        cout.flush();
-        sleep(1);
-    }
-    cout << endl;
-    cout << "Registration completed." << endl;
-    sleep(1);
-}
+// void registr_date_time()
+// {
+//     system("clear");
+//     int yr, mnth, day, hr, min, sec, i;
+//     string name, nameid, id, tap;
+//     cout << "Please enter customer name ." << endl;
+//     cin >> name;
+//     cout << "Please enter id of car the customer rented." << endl;
+//     cin >> id;
+//     nameid = name + id;
+//     ofstream datelists;
+//     datelists.open(nameid + "_dt.txt", ios::app);
+//     cout << "Enter the year,month and day the customer  have rented the car." << endl;
+//     cin >> yr >> mnth >> day;
+//     cout << "Enter hour minutes and second the customer have rented the car. " << endl;
+//     cin >> hr >> min >> sec;
+//     cout << "Enter am or pm." << endl;
+//     cin >> tap;
+//     datelists << yr << ' ' << mnth << ' ' << day << ' ' << hr << ' ' << min << ' ' << sec << ' ' << tap << endl;
+//     cout << "Registering  ";
+//     for (i = 0; i < 2; i++)
+//     {
+//         cout << " - ";
+//         cout.flush();
+//         sleep(1);
+//     }
+//     cout << endl;
+//     cout << "Registration completed." << endl;
+//     sleep(1);
+// }
 void calculatefare(string xy)
 {
     system("clear");
@@ -723,7 +799,7 @@ void calculate_total_fare(int a, int b, int c, int d, int e, int f, int g, int h
     sleep(2);
     system("clear");
     total_fare = m * p * 12 * 30 + n * p * 30 + o * p + q * p / 24 + r * p / 3600;
-    cout << "Your fare to pay is: Rs -" << total_fare << endl;
+    cout << "Your fare to pay is: Rs : " << total_fare << endl;
     sleep(2);
     cout << "Enter 1 to pay fare and return car." << endl;
     cin >> i1;
